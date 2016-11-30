@@ -8,18 +8,18 @@ class PingActor extends Actor with ActorLogging {
 
   var counter = 0
   val pongActor = context.actorOf(PongActor.props, "pongActor")
-  var start = scala.compat.Platform.currentTime
+  var start = 0L
   val total = 1000 * 10000
   def receive = {
     case Initialize =>
-      start = scala.compat.Platform.currentTime
+      start = System.nanoTime()
       log.info("In PingActor - starting ping-pong")
       pongActor ! PingMessage("ping")
     case PongActor.PongMessage(text) =>
       counter += 1
       if (counter == total) {
-        log.info(s"${total * 2} messages, ${scala.compat.Platform.currentTime - start}ms, ${total * 2.0 / (scala.compat.Platform.currentTime - start) * 1000} msg/s")
-        context.system.shutdown()
+        log.info(s"${total * 2} messages, ${(System.nanoTime() - start) / 1000000000D} s, ${total * 2.0 / (System.nanoTime() - start) * 1000000000} msg/s")
+        context.system.terminate()
       }
       else {
         if (counter % 100000 == 0)
