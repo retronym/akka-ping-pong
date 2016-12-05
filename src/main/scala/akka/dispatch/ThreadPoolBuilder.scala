@@ -5,23 +5,11 @@
 package akka.dispatch
 
 import java.util.Collection
-import scala.concurrent.{ BlockContext, CanAwait }
+
+import scala.concurrent.{BlockContext, CanAwait}
 import scala.concurrent.duration.Duration
-import scala.concurrent.forkjoin._
-import java.util.concurrent.{
-  ArrayBlockingQueue,
-  BlockingQueue,
-  Callable,
-  ExecutorService,
-  LinkedBlockingQueue,
-  RejectedExecutionHandler,
-  RejectedExecutionException,
-  SynchronousQueue,
-  TimeUnit,
-  ThreadFactory,
-  ThreadPoolExecutor
-}
-import java.util.concurrent.atomic.{ AtomicReference, AtomicLong }
+import java.util.concurrent._
+import java.util.concurrent.atomic.{AtomicLong, AtomicReference}
 
 object ThreadPoolConfig {
   type QueueFactory = () ⇒ BlockingQueue[Runnable]
