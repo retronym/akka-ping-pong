@@ -1,4 +1,4 @@
-name := """minimal-akka-scala-seed"""
+name := """akka-ping-pong"""
 
 version := "1.0"
 scalaVersion := "2.11.8"
