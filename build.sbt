@@ -4,8 +4,7 @@ version := "1.0"
 scalaVersion := "2.11.8"
 
 libraryDependencies ++= Seq(
-  "com.typesafe.akka" %% "akka-actor" % "2.4.14" withSources() withJavadoc(),
-  "com.typesafe.akka" %% "akka-testkit" % "2.4.14" % "test" withSources() withJavadoc())
+  "com.typesafe" % "config" % "1.3.0")
 
 
 // javaOptions in run += "-agentpath:/Applications/YourKit-Java-Profiler-2016.02.app/Contents/Resources/bin/mac/libyjpagent.jnilib=tracing"

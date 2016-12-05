@@ -19,8 +19,6 @@ import scala.util.control.NonFatal
 import scala.util.Success
 import akka.dispatch.ExecutionContexts.sameThreadExecutionContext
 
-import scala.compat.java8.FutureConverters
-
 /**
  * Companion object providing factory methods for Circuit Breaker which runs callbacks in caller's thread
  */
@@ -177,9 +175,7 @@ class CircuitBreaker(
    *   `scala.concurrent.TimeoutException` if the call timed out
    */
   def callWithCircuitBreakerCS[T](body: Callable[CompletionStage[T]]): CompletionStage[T] =
-    FutureConverters.toJava[T](callWithCircuitBreaker(new Callable[Future[T]] {
-      override def call(): Future[T] = FutureConverters.toScala(body.call())
-    }))
+    ???
 
   /**
    * Wraps invocations of synchronous calls that need to be protected

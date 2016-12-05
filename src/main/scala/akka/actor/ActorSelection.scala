@@ -19,7 +19,6 @@ import akka.util.Helpers
 import akka.util.Timeout
 import akka.dispatch.ExecutionContexts
 
-// import scala.compat.java8.FutureConverters
 
 /**
  * An ActorSelection is a logical view of a section of an ActorSystem's tree of Actors,
@@ -93,7 +92,7 @@ abstract class ActorSelection extends Serializable {
    *
    */
   def resolveOneCS(timeout: FiniteDuration): CompletionStage[ActorRef] =
-    ???//FutureConverters.toJava[ActorRef](resolveOne(timeout))
+    ???
 
   override def toString: String = {
     val builder = new java.lang.StringBuilder()
